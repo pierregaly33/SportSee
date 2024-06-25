@@ -1,0 +1,18 @@
+.navbar-main {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    column-gap: 85px;
+    height: 91px;
+    .navbar {
+        width: 65%;
+        ul{
+            display: flex;
+            justify-content: space-between;
+            li {
+                color: white;
+                font-size: 20px;
+            }
+        }
+    }
+}

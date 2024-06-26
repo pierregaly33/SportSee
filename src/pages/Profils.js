@@ -1,22 +1,20 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import { NavLink } from "react-router-dom";
+import UserProfile from "../components/firstName";
 
-function Home() {
+function Profils() {
     return (
         <>
             <Navbar />
             <main>
                 <Sidebar />
-                <div className="container">
-                    <NavLink className="12" to={`/user/12`}>
-                        <p>Utilisateur </p>
-                    </NavLink>
+                <div className="profil">
+                    <UserProfile userId={12} />
                 </div>
             </main>
         </>
     );
 }
 
-export default Home;
+export default Profils;

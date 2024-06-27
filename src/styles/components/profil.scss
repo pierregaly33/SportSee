@@ -1,3 +1,25 @@
 .profil-main{
     margin: auto;
+    width: 91%;
+    .dashboard {
+        .dashboard-chart {
+            display: flex;
+            flex-direction: column;
+            .activity {
+                height: 272px;
+                width: 700px;
+            }
+            .small-charts {
+                .average-session {
+                    height: 260px;
+                    width: 260px;
+                    background-color: #FF0000;
+                    border-radius: 10px;
+                    h3 {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
 }

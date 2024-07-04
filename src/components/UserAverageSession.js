@@ -53,6 +53,7 @@ function UserAverageSession({ userId }) {
                         tickFormatter={formatDay}
                         tick={{ fill: "white", fontSize: 12 }}
                         interval={0}
+                        padding={{ left: 20, right: 20 }}
                     />
                     <YAxis hide />
                     <Tooltip content={<CustomTooltip />} cursor={false} />

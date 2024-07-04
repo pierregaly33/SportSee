@@ -18,15 +18,42 @@ function UserAverageSession({ userId }) {
         return null;
     };
 
+    function formatDay(day) {
+        if (day === 1) {
+            return "L";
+        } else if (day === 2) {
+            return "M";
+        } else if (day === 3) {
+            return "M";
+        } else if (day === 4) {
+            return "J";
+        } else if (day === 5) {
+            return "V";
+        } else if (day === 6) {
+            return "S";
+        } else if (day === 7) {
+            return "D";
+        }
+    }
+
     return (
         <>
+            <div></div>
             <h3>
                 Durée moyenne des <br />
                 sessions
             </h3>
             <ResponsiveContainer width="100%" height="80%">
-                <LineChart width={260} height={260} data={data.sessions}>
-                    <XAxis dataKey="day" axisLine={false} tickLine={false} />
+                <LineChart width={260} height={260} data={data.sessions} margin={{ bottom: 15 }}>
+                    <XAxis
+                        dataKey="day"
+                        axisLine={false}
+                        tickLine={false}
+                        tickMargin={10}
+                        tickFormatter={formatDay}
+                        tick={{ fill: "white", fontSize: 12 }}
+                        interval={0}
+                    />
                     <YAxis hide />
                     <Tooltip content={<CustomTooltip />} cursor={false} />
                     <Line

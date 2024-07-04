@@ -1,0 +1,28 @@
+.cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .card{
+        background-color: #FBFBFB;
+        width: 200px;
+        align-items: center;
+        justify-content: center;
+        height: 115px;
+        display: flex;
+        gap: 7%;
+        .card-title {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .card-value {
+                font-weight: 700;
+                font-size: 20px;
+            }
+            .card-type {
+                color: #74798C;
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+}

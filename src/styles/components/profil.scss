@@ -1,23 +1,28 @@
 .profil-main{
-    margin: auto;
-    width: 91%;
+    margin: 3% 5%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
     .dashboard {
+        display: flex;
+        gap: 30px;
         .dashboard-chart {
             display: flex;
             flex-direction: column;
+            gap: 30px;
             .activity {
                 height: 272px;
-                width: 700px;
+                width: 835px;
+                background-color: #FBFBFB;
             }
             .small-charts {
-                .average-session {
+                display: flex;
+                gap: 20px;
+                .charts {
                     height: 260px;
                     width: 260px;
-                    background-color: #FF0000;
                     border-radius: 10px;
-                    h3 {
-                        color: white;
-                    }
                 }
             }
         }

@@ -15,7 +15,15 @@ function UserActivity({ userId }) {
                     <YAxis yAxisId="kilogram" tickMargin={30} orientation="right" axisLine={false} tickCount={3} />
                     <YAxis yAxisId="calories" hide />
                     <Tooltip />
-                    <Legend iconType="circle" verticalAlign="top" align="right" />
+                    <Legend
+                        iconType="circle"
+                        verticalAlign="top"
+                        align="right"
+                        wrapperStyle={{
+                            paddingBottom: 40,
+                            paddingRight: 40,
+                        }}
+                    />
                     <Bar
                         yAxisId="kilogram"
                         name="Poids (kg)"

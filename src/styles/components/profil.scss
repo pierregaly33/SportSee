@@ -10,7 +10,7 @@
         .dashboard-chart {
             display: flex;
             flex-direction: column;
-            width: 80%;
+            width: 100%;
             gap: 30px;
             .small-charts {
                 display: flex;
@@ -22,5 +22,11 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 1150px) {
+    .dashboard {
+        flex-direction: column-reverse
     }
 }

@@ -27,3 +27,10 @@
         }
     }
 }
+
+@media (max-width: 1150px) {
+    .cards {
+        flex-direction: unset;
+        width: 100%;
+    }
+}

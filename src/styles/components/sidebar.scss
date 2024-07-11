@@ -9,6 +9,10 @@
         display: flex;
         flex-direction: column;
         row-gap: 15px;
+        align-items: center;
+        img {
+            width: 50px;
+        }
     }
     p {
         transform: rotate(270deg);

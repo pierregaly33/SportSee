@@ -1,4 +1,6 @@
-
+#root {
+    height: 100%;
+}
 
 
 * {
@@ -17,4 +19,16 @@ html, body {
 
 main {
     display: flex;
+}
+
+.home {
+    height: 100%;
+}
+
+
+@media (max-width: 1150px) {
+    main {
+        height: unset;
+    }
+    
 }

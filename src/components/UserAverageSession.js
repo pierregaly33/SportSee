@@ -1,5 +1,5 @@
 import React from "react";
-import { getUserSessions } from "../Store";
+import { getUserSessions } from "../store/store";
 import { ResponsiveContainer, LineChart, XAxis, YAxis, Tooltip, Line } from "recharts";
 
 function UserAverageSession({ userId }) {

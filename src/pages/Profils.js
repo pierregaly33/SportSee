@@ -1,59 +1,65 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import UserProfile from "../components/firstName";
+import FirstName from "../components/FirstName";
 import UserActivity from "../components/UserActivity";
 import UserAverageSession from "../components/UserAverageSession";
 import UserPerformance from "../components/UserPerformance";
 import UserScore from "../components/UserScore";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
-import userApi from "../api/userApi";
+import { getUserActivity, getUserById } from "../store/store";
 
 function Profils() {
     let { userId } = useParams();
-    const [userData, setUserData] = useState(null);
+    const [user, setUserData] = useState(null);
+    const [userActivity, setUserActivity] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await userApi(userId);
+            const data = await getUserById(userId);
             setUserData(data);
         };
 
-        fetchData()
-            // make sure to catch any error
-            .catch(console.error);
-    }, []);
+        const fetchActivity = async () => {
+            const data = await getUserActivity(userId);
+            setUserActivity(data.sessions);
+        };
+
+        fetchData().catch(console.error);
+
+        fetchActivity().catch(console.error);
+    }, [userId]);
     return (
         <>
             <Navbar />
             <main>
                 <Sidebar />
-                {userData !== null ? (
+                {user !== null ? (
                     <section className="profil-main">
-                        <UserProfile user={userData} />
+                        <FirstName user={user} />
                         <div className="dashboard">
                             <div className="dashboard-chart">
                                 <div className="activity">
-                                    <UserActivity userId={userData.userId} />
+                                    <UserActivity data={userActivity} />
                                 </div>
                                 <div className="small-charts">
                                     <div className="charts average-session">
-                                        <UserAverageSession userId={userData.userId} />
+                                        <UserAverageSession userId={user} />
                                     </div>
                                     <div className="charts user-performance">
-                                        <UserPerformance userId={userData.userId} />
+                                        <UserPerformance userId={user} />
                                     </div>
                                     <div className="charts user-score">
-                                        <UserScore user={userData} />
+                                        <UserScore user={user} />
                                     </div>
                                 </div>
                             </div>
                             <div className="cards">
-                                <Card type="Calories" value={userData.keyData.calorieCount} />
-                                <Card type="Proteines" value={userData.keyData.proteinCount} />
-                                <Card type="Glucides" value={userData.keyData.carbohydrateCount} />
-                                <Card type="Lipides" value={userData.keyData.lipidCount} />
+                                <Card type="Calories" value={user.keyData.calorieCount} />
+                                <Card type="Proteines" value={user.keyData.proteinCount} />
+                                <Card type="Glucides" value={user.keyData.carbohydrateCount} />
+                                <Card type="Lipides" value={user.keyData.lipidCount} />
                             </div>
                         </div>
                     </section>

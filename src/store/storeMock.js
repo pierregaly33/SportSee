@@ -1,4 +1,4 @@
-const getUserById = (id) => {
+const getUserById = async (id) => {
     return {
         id: 12,
         userInfos: {

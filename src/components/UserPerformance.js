@@ -1,6 +1,6 @@
 import React from "react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
-import { getUserPerformance } from "../Store";
+import { getUserPerformance } from "../store/store";
 
 function UserPerformance({ userId }) {
     const data = getUserPerformance(userId);

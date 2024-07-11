@@ -8,12 +8,15 @@ import UserPerformance from "../components/UserPerformance";
 import UserScore from "../components/UserScore";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
-import { getUserActivity, getUserById } from "../store/store";
+import { getUserActivity, getUserById, getUserPerformance, getUserSession } from "../store/store";
 
 function Profils() {
     let { userId } = useParams();
+
     const [user, setUserData] = useState(null);
     const [userActivity, setUserActivity] = useState(null);
+    const [userAverageSession, setUserAverageSession] = useState(null);
+    const [userPerformance, setUserPerformance] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,10 +29,22 @@ function Profils() {
             setUserActivity(data.sessions);
         };
 
-        fetchData().catch(console.error);
+        const fetchAverageSession = async () => {
+            const data = await getUserSession(userId);
+            setUserAverageSession(data.sessions);
+        };
 
+        const fetchUserPerformance = async () => {
+            const data = await getUserPerformance(userId);
+            setUserPerformance(data.data);
+        };
+
+        fetchData().catch(console.error);
         fetchActivity().catch(console.error);
+        fetchAverageSession().catch(console.error);
+        fetchUserPerformance().catch(console.error);
     }, [userId]);
+
     return (
         <>
             <Navbar />
@@ -45,10 +60,10 @@ function Profils() {
                                 </div>
                                 <div className="small-charts">
                                     <div className="charts average-session">
-                                        <UserAverageSession userId={user} />
+                                        <UserAverageSession data={userAverageSession} />
                                     </div>
                                     <div className="charts user-performance">
-                                        <UserPerformance userId={user} />
+                                        <UserPerformance data={userPerformance} />
                                     </div>
                                     <div className="charts user-score">
                                         <UserScore user={user} />

@@ -16,7 +16,7 @@ const getUserById = async (id) => {
     };
 };
 
-const getUserActivity = (id) => {
+const getUserActivity = async (id) => {
     return {
         userId: 12,
         sessions: [
@@ -59,7 +59,7 @@ const getUserActivity = (id) => {
     };
 };
 
-const getUserSessions = (id) => {
+const getUserSession = async (id) => {
     return {
         userId: 12,
         sessions: [
@@ -95,7 +95,7 @@ const getUserSessions = (id) => {
     };
 };
 
-const getUserPerformance = (id) => {
+const getUserPerformance = async (id) => {
     return {
         userId: 12,
         kind: {
@@ -134,4 +134,4 @@ const getUserPerformance = (id) => {
         ],
     };
 };
-export { getUserById, getUserActivity, getUserSessions, getUserPerformance };
+export { getUserById, getUserActivity, getUserSession, getUserPerformance };

@@ -2,7 +2,6 @@ import React from "react";
 import { BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend, Bar, Rectangle } from "recharts";
 
 function UserActivity({ data }) {
-    console.log(data);
     return (
         <>
             <h3>Activité quotidienne</h3>

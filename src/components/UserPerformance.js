@@ -1,10 +1,7 @@
 import React from "react";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
-import { getUserPerformance } from "../store/store";
 
-function UserPerformance({ userId }) {
-    const data = getUserPerformance(userId);
-
+function UserPerformance({ data }) {
     function formatKind(kind) {
         if (kind === 1) {
             return "Cardio";
@@ -23,7 +20,7 @@ function UserPerformance({ userId }) {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
-            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data.data}>
+            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
                 <PolarGrid radialLines={false} />
                 <PolarAngleAxis dataKey="kind" tickFormatter={formatKind} tick={{ fontSize: 11, fill: "white" }} />
                 <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />

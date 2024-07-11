@@ -1,10 +1,7 @@
 import React from "react";
-import { getUserSessions } from "../store/store";
 import { ResponsiveContainer, LineChart, XAxis, YAxis, Tooltip, Line } from "recharts";
 
-function UserAverageSession({ userId }) {
-    const data = getUserSessions(userId);
-
+function UserAverageSession({ data }) {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -44,7 +41,7 @@ function UserAverageSession({ userId }) {
                 sessions
             </h3>
             <ResponsiveContainer width="100%" height="80%">
-                <LineChart width={260} height={260} data={data.sessions} margin={{ bottom: 15 }}>
+                <LineChart width={260} height={260} data={data} margin={{ bottom: 15 }}>
                     <XAxis
                         dataKey="day"
                         axisLine={false}

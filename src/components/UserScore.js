@@ -1,10 +1,8 @@
 import React from "react";
 import { ResponsiveContainer, RadialBarChart, RadialBar } from "recharts";
-import { getUserById } from "../Store";
 
-function UserScore(userId) {
-    const data = getUserById(userId);
-    const score = data.todayScore ? data.todayScore : data.score;
+function UserScore({ user }) {
+    const score = user.todayScore ? user.todayScore : user.score;
     const dataArray = [{ name: "score", value: score }];
     return (
         <>
@@ -22,7 +20,7 @@ function UserScore(userId) {
                 </RadialBarChart>
             </ResponsiveContainer>
             <div className="chartgoal-label center">
-                <p className="percent">{data.todayScore && data.todayScore * 100}%</p>
+                <p className="percent">{score && score * 100}%</p>
                 <p>de votre</p>
                 <p>objectif</p>
             </div>

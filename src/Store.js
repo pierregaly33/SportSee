@@ -2,7 +2,7 @@ const getUserById = (id) => {
     return {
         id: 12,
         userInfos: {
-            firstName: "Nicolas",
+            firstName: "Francis",
             lastName: "Dovineau",
             age: 31,
         },
@@ -11,7 +11,7 @@ const getUserById = (id) => {
             calorieCount: 1930,
             proteinCount: 155,
             carbohydrateCount: 290,
-            lipidCount: 50,
+            lipidCount: 5000,
         },
     };
 };

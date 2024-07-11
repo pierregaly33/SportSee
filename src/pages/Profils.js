@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import UserProfile from "../components/firstName";
@@ -7,45 +7,59 @@ import UserAverageSession from "../components/UserAverageSession";
 import UserPerformance from "../components/UserPerformance";
 import UserScore from "../components/UserScore";
 import Card from "../components/Card";
-import { getUserById } from "../Store";
+import { useParams } from "react-router-dom";
+import userApi from "../api/userApi";
 
 function Profils() {
-    const {
-        keyData: { calorieCount, proteinCount, carbohydrateCount, lipidCount },
-    } = getUserById(12);
+    let { userId } = useParams();
+    const [userData, setUserData] = useState(null);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await userApi(userId);
+            setUserData(data);
+        };
+
+        fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, []);
     return (
         <>
             <Navbar />
             <main>
                 <Sidebar />
-                <section className="profil-main">
-                    <UserProfile userId={12} />
-                    <div className="dashboard">
-                        <div className="dashboard-chart">
-                            <div className="activity">
-                                <UserActivity userId={12} />
+                {userData !== null ? (
+                    <section className="profil-main">
+                        <UserProfile user={userData} />
+                        <div className="dashboard">
+                            <div className="dashboard-chart">
+                                <div className="activity">
+                                    <UserActivity userId={userData.userId} />
+                                </div>
+                                <div className="small-charts">
+                                    <div className="charts average-session">
+                                        <UserAverageSession userId={userData.userId} />
+                                    </div>
+                                    <div className="charts user-performance">
+                                        <UserPerformance userId={userData.userId} />
+                                    </div>
+                                    <div className="charts user-score">
+                                        <UserScore user={userData} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="small-charts">
-                                <div className="charts average-session">
-                                    <UserAverageSession userId={12} />
-                                </div>
-                                <div className="charts user-performance">
-                                    <UserPerformance userId={12} />
-                                </div>
-                                <div className="charts user-score">
-                                    <UserScore userId={12} />
-                                </div>
+                            <div className="cards">
+                                <Card type="Calories" value={userData.keyData.calorieCount} />
+                                <Card type="Proteines" value={userData.keyData.proteinCount} />
+                                <Card type="Glucides" value={userData.keyData.carbohydrateCount} />
+                                <Card type="Lipides" value={userData.keyData.lipidCount} />
                             </div>
                         </div>
-                        <div className="cards">
-                            <Card type="Calories" value={calorieCount} />
-                            <Card type="Proteines" value={proteinCount} />
-                            <Card type="Glucides" value={carbohydrateCount} />
-                            <Card type="Lipides" value={lipidCount} />
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                ) : (
+                    <div>loading</div>
+                )}
             </main>
         </>
     );

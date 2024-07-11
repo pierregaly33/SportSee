@@ -7,7 +7,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route index element={<Home />} />
-                <Route path="user/12" element={<Profils />} />
+                <Route path="user/:userId" element={<Profils />} />
             </Routes>
         </BrowserRouter>
     );

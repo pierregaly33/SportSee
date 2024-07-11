@@ -10,8 +10,11 @@ function Home() {
             <main>
                 <Sidebar />
                 <div className="container">
-                    <NavLink className="12" to={`/user/12`}>
-                        <p>Utilisateur </p>
+                    <NavLink className="12" to="/user/12">
+                        <p>Utilisateur 12</p>
+                    </NavLink>
+                    <NavLink className="16" to="/user/18">
+                        <p>Utilisateur 18</p>
                     </NavLink>
                 </div>
             </main>

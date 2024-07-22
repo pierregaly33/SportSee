@@ -14,10 +14,10 @@ function Navbar() {
                     <NavLink className="profil" to="/">
                         <li>Profil</li>
                     </NavLink>
-                    <NavLink className="reglage" to="/">
+                    <NavLink className="reglage" to="/comingSoon">
                         <li>Réglage</li>
                     </NavLink>
-                    <NavLink className="communaute" to="/">
+                    <NavLink className="communaute" to="/comingSoon">
                         <li>Communauté</li>
                     </NavLink>
                 </ul>

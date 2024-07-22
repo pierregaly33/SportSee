@@ -3,7 +3,7 @@ import React from "react";
 const FirstName = ({ user }) => {
     return (
         <>
-            <div className="test">
+            <div className="container-title">
                 <h2 className="profil-title">
                     Bonjour <span className="profil-firstname">{user.userInfos.firstName}</span>
                 </h2>

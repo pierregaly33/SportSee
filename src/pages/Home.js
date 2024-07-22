@@ -11,9 +11,11 @@ function Home() {
                 <Sidebar />
                 <div className="container">
                     <NavLink className="12" to="/user/12">
+                        <div className="test"></div>
                         <p>Utilisateur 12</p>
                     </NavLink>
                     <NavLink className="18" to="/user/18">
+                        <div className="test"></div>
                         <p>Utilisateur 18</p>
                     </NavLink>
                 </div>

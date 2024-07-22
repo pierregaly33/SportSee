@@ -1,0 +1,14 @@
+.container {
+    margin: auto;
+    display: flex;
+    gap: 80px;
+    .test {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        border-radius: 50%;
+    }
+    p {
+        text-align: center;
+    }
+}

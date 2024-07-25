@@ -15,10 +15,8 @@ function UserAverageSession({ data }) {
         return null;
     };
 
-    const CustomCursor = (props) => {
-        const { points, width, height } = props;
-        const { x, y } = points[0];
-        return <Rectangle fill="black" stroke="black" opacity={0.3} x={x} y={y} width={width} height={150} />;
+    const CustomCursor = ({ points }) => {
+        return <Rectangle fill="#000000" opacity={0.2} x={points[0].x} width={500} height={260} />;
     };
 
     function formatDay(day) {
@@ -45,8 +43,8 @@ function UserAverageSession({ data }) {
                 Durée moyenne des <br />
                 sessions
             </h3>
-            <ResponsiveContainer width="100%" height="80%">
-                <LineChart width={260} height={260} data={data}>
+            <ResponsiveContainer width="100%" height="100%">
+                <LineChart width="100%" height="100%" data={data} margin={{ top: 80, bottom: 16, left: 16, right: 16 }}>
                     <XAxis
                         dataKey="day"
                         axisLine={false}
@@ -55,7 +53,6 @@ function UserAverageSession({ data }) {
                         tickFormatter={formatDay}
                         tick={{ fill: "white", fontSize: 12 }}
                         interval={0}
-                        padding={{ left: 5, right: 5 }}
                     />
                     <YAxis hide padding={{ bottom: 15 }} />
                     <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />

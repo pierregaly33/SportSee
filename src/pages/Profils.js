@@ -55,7 +55,7 @@ function Profils() {
                 <Navbar />
                 <main className="home">
                     <Sidebar />
-                    <div>ID introuvable</div>
+                    <div className="error">ID introuvable</div>
                 </main>
             </>
         );
@@ -67,7 +67,7 @@ function Profils() {
                 <Navbar />
                 <main className="home">
                     <Sidebar />
-                    <div>Une erreur est survenue !</div>
+                    <div className="error">Une erreur est survenue !</div>
                 </main>
             </>
         );
@@ -110,7 +110,7 @@ function Profils() {
             ) : (
                 <main className="home">
                     <Sidebar />
-                    <div>loading</div>
+                    <div className="loading">loading...</div>
                 </main>
             )}
         </>

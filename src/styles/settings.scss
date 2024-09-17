@@ -25,6 +25,16 @@ main {
     height: 100%;
 }
 
+.error {
+    margin: auto;
+    font-size: 35px;
+    color: red;
+}
+
+.loading {
+    margin: auto;
+    font-size: 35px;
+}
 
 
 @media (max-width: 1150px) {

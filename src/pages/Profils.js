@@ -17,6 +17,7 @@ function Profils() {
     const [userActivity, setUserActivity] = useState(null);
     const [userAverageSession, setUserAverageSession] = useState(null);
     const [userPerformance, setUserPerformance] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,18 +40,45 @@ function Profils() {
             setUserPerformance(data.data);
         };
 
-        fetchData().catch(console.error);
+        fetchData().catch((e) => {
+            console.log(e.message);
+            setError(true);
+        });
         fetchActivity().catch(console.error);
         fetchAverageSession().catch(console.error);
         fetchUserPerformance().catch(console.error);
     }, [userId]);
 
+    if (user === undefined) {
+        return (
+            <>
+                <Navbar />
+                <main className="home">
+                    <Sidebar />
+                    <div>ID introuvable</div>
+                </main>
+            </>
+        );
+    }
+
+    if (error === true) {
+        return (
+            <>
+                <Navbar />
+                <main className="home">
+                    <Sidebar />
+                    <div>Une erreur est survenue !</div>
+                </main>
+            </>
+        );
+    }
+
     return (
         <>
             <Navbar />
-            <main>
-                <Sidebar />
-                {user !== null ? (
+            {user !== null ? (
+                <main>
+                    <Sidebar />
                     <section className="profil-main">
                         <FirstName user={user} />
                         <div className="dashboard">
@@ -78,10 +106,13 @@ function Profils() {
                             </div>
                         </div>
                     </section>
-                ) : (
+                </main>
+            ) : (
+                <main className="home">
+                    <Sidebar />
                     <div>loading</div>
-                )}
-            </main>
+                </main>
+            )}
         </>
     );
 }

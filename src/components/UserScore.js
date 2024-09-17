@@ -20,7 +20,7 @@ function UserScore({ user }) {
                 </RadialBarChart>
             </ResponsiveContainer>
             <div className="chartgoal-label center">
-                <p className="percent">{score && score * 100}%</p>
+                <p className="percent">{score * 100}%</p>
                 <p>de votre</p>
                 <p>objectif</p>
             </div>
